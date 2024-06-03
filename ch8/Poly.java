@@ -18,6 +18,7 @@ public class Poly {
             }
             System.out.println(result % MOD);
         }
+        scanner.close();
     }
 
     public static int poly(int n, int first) {
