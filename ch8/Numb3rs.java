@@ -68,19 +68,17 @@ public class Numb3rs {
     public static float solution(int pos, int day, int[][] pToP) {
         float ret = 0f;
         // 기저 사례.
-        if (day==1) {
-            // 시작점에서부터의 확률
-            ret = (float) pToP[initP][pos] / pToP[initP][n];
-            return ret;
+        if (day==0) {
+            return pos==initP ? 1.0f:0.0f;
         }
         if (cache[pos][day]!=0)
             return cache[pos][day];
 
         // 직전의 마을(lastPos)에서부터 현재 pos까지의 확률 계산
         for (int lastPos = 0; lastPos < n; lastPos++) {
-            float debug = solution(lastPos, day - 1, pToP);
-            float posible = (float) pToP[lastPos][pos] / pToP[lastPos][n];
-            ret += debug * posible;
+            if (pToP[lastPos][pos]==1) {
+                ret += (float) solution(lastPos, day - 1, pToP) / pToP[lastPos][n];
+            }
         }
         cache[pos][day] = ret;
         return ret;
