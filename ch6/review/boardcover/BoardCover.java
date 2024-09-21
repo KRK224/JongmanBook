@@ -27,8 +27,6 @@ public class BoardCover {
                         }
                     }
                 }
-                System.out.println(cb);
-
                 System.out.println(solution(0, 0, cb));
                 tc--;
             }
